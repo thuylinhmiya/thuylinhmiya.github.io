@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower Website</title>
+<style>
+    BODY {
+        margin: auto;
+        padding: 0px;
+        background: #CCCCCC;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 12px;
+    }
+    #wrap {
+        background: #ffffff;
+        margin: 20px auto;
+        width: 900px;
+        height: auto;
+        overflow: hidden;
+    }
+    header {
+        background: url(header.jpg);
+        height: 181px;
+        width: 900px;
+    }
+    #logo {
+        padding: 20px 0 0 50px;
+    }
+    #menu_top {
+        margin-top: 55px;
+        margin-left: 30px;
+        background: #ffffff;
+        height: 40px;
+        opacity: 0.6;
+        border-radius: 10px 0px 0px 10px;
+    }
+    .level1 {
+        clear: both;
+        list-style-type: none;
+        padding-top: 12px;
+        opacity: 1.0;
+        color: #000;
+        position: relative;
+    }
+    .level1 li {
+        display: inline;
+        float: left;
+        padding: 0px 20px 0px 0px;
+        height: 27px;
+        font-weight: bold;
+    }
+    .level1 li a,
+    .level1 li a:visited {
+        color: red;
+        text-decoration: none;
+    }
+    .level1 li a:hover {
+        color: green;
+    }
+    .level2 {
+        display: none;
+        position: absolute;
+        padding: 0px;
+        margin-top: 11px;
+    }
+    .level1 li:hover>.level2 {
+        display: block;
+    }
+    .level2 li {
+        float: none;
+        position: relative;
+        display: block;
+        padding: 10px;
+        height: auto;
+        background: #ccc;
+    }
+    .level2 li:hover {
+        background: #CC0;
+    }
+    #welcome {
+        background: #fff;
+        padding: 8px;
+        vertical-align: middle;
+        border: dotted 2px #9C0;
+        font-weight: bold;
+        margin: 10px auto;
+        box-sizing: border-box;
+    }
+    #center_content {
+        background-color: #ffffff;
+        width: 100%;
+        overflow: hidden;
+    }
+    #center_content #left {
+        width: 500px;
+        min-height: 200px;
+        float: left;
+    }
+    .title {
+        color: #B81F22;
+        font-size: 17px;
+        margin: 10px 10px 10px 15px;
+        display: block;
+    }
+    .product {
+        border-bottom: dashed 1px #ccc;
+        float: left;
+        margin-top: 5px;
+        margin-bottom: 20px;
+    }
+    .product .img {
+        clear: both;
+        float: left;
+        margin-left: 20px;
+    }
+    .product .description {
+        float: right;
+        width: 295px;
+        padding: 5px 15px;
+        border: solid 1px #ddd;
+        border-radius: 5px;
+    }
+    .product .name {
+        color: #B81F22;
+        font-weight: bold;
+    }
+    .product .about {
+        text-align: justify;
+    }
+    #center_content #right {
+        width: 380px;
+        min-height: 200px;
+        float: right;
+    }
+    #promotion {
+        float: left;
+        width: 170px;
+    }
+    .product_small {
+        margin-bottom: 15px;
+    }
+    .product_small .name {
+        text-align: center;
+        color: #666;
+    }
+    .product_small .img {
+        border-radius: 5px;
+        border: solid 1px #ddd;
+        text-align: center;
+        padding: 10px;
+        width: 132px;
+        float: left;
+    }
+    #categories {
+        float: left;
+        width: 190px;
+        margin-left: 10px;
+    }
+    .menu_right {
+        list-style: none;
+        list-style-image: url(left_menu_bullet.gif);
+    }
+    .menu_right li {
+        padding: 5px 5px 5px 10px;
+        border-bottom: dashed 1px #ccc;
+        font-weight: bold;
+    }
+    #footer {
+        background: url(footer_bg.gif) no-repeat bottom;
+        height: 100px;
+        border-top: dashed 1px #ccc;
+        width: 100%;
+        clear: both;
+    }
+    #footer .left {
+        float: left;
+        width: 600px;
+        padding: 10px 10px 10px 20px;
+        color: #666666;
+    }
+    #footer .right {
+        float: right;
+        padding: 10px 20px 10px 10px;
+    }
+</style>
+</head>
+<body>
+    <div id="wrap">
+        <header id="header">
+            <div id="logo"><img src="logo.gif" width="191" height="66" alt="Flower Shop">
+            </div>
+            <nav id="menu_top">
+                <ul class="level1">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Introduction</a></li>
+                    <li><a href="#">Flower Category</a>
+                        <ul class="level2">
+                            <li><a href="#">Sun Flower</a></li>
+                            <li><a href="#">Rose Flower</a></li>
+                            <li><a href="#">Lily Flower</a></li>
+                            <li><a href="#">Tulips Flower</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="dangky.html">Register</a></li>
+                    <li><a href="#">Login</a></li>
+                    <li><a href="lienhe.html">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div id="welcome">
+            <marquee direction="left" behavior="scroll" scrollamount="4">
+                Welcome to the online sales website - Flower Shop
+            </marquee>
+        </div>
+        <section id="center_content">
+            <div id="left">
+                <div class="title"><img src="bullet1.gif" align="top" />New Product</div>
+                <div class="product">
+                    <div class="img"><img src="prod1.gif" /></div>
+                    <div class="description">
+                        <p class="name">Yellow Rose</p>
+                        <p class="about">Yellow roses are a special gift for women.
+                            Yellow roses are truly a more meaningful gift for relatives and friends.</p>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="img"><img src="prod2.gif" /></div>
+                    <div class="description">
+                        <p class="name">Purple rose</p>
+                        <p class="about">A beautiful bouquet of purple roses is an expression of affection
+                            and respect for the person you love.</p>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="img"><img src="prod1.gif"></div>
+                    <div class="description">
+                        <p class="name">Yellow Rose</p>
+                        <p class="about">Yellow roses are a special gift for women.
+                            Yellow roses are truly a more meaningful gift for relatives and friends.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="right">
+                <div id="promotion">
+                    <div class="title"><img src="bullet2.gif" align="top" />Promotion</div>
+                    <div class="product_small">
+                        <div class="name">Tulips Flower</div>
+                        <div class="img"><img src="thumb1.gif"></div>
+                    </div>
+                    <div class="product_small">
+                        <div class="name">Purple Flower</div>
+                        <div class="img"><img src="thumb2.gif"></div>
+                    </div>
+                    <div class="product_small">
+                        <div class="name">Yellow Flower</div>
+                        <div class="img"><img src="thumb3.gif"></div>
+                    </div>
+                </div>
+                <aside id="categories">
+                    <div class="title"><img src="bullet5.gif">Flower catalog</div>
+                    <ul class="menu_right">
+                        <li>Purple rose</li>
+                        <li>Sun Flower</li>
+                        <li>Lily Flower</li>
+                        <li>Blue rose</li>
+                        <li>Purple orchids</li>
+                        <li>Yellow rose</li>
+                        <li>Immortal flowers</li>
+                        <li>Tulips Flower</li>
+                    </ul>
+                </aside>
+            </div>
+                <div style="clear:both"></div>
+        </section>
+        <footer id="footer">
+            <div class="left"> Flower Shop Co., Ltd - Vietnam Branch
+                <br /> Address: 01 - Hoa Binh - Ninh Kieu Dist - CanTho City
+                <br /> Tel: 0900000001
+            </div>
+            <div class="right"><img src="footer_logo.gif" width="97" height="29" />
+            </div>
+        </footer>
+    </div>    
+</body>
+</html>
