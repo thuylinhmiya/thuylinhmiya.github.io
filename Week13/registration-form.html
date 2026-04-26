@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body { 
+            font-family: Verdana, Geneva, Tahoma, sans-serif; 
+            color: #336699; 
+        }
+        .container { 
+            width: 600px; 
+            margin: 20px auto; 
+            padding-top: 10px; 
+        }
+        h2 { 
+            color: #800000; 
+            font-size: 18px; 
+            margin-bottom: 5px; 
+        }
+        hr { 
+            border: none;
+            height: 2px;
+            background-color: #A6A6A6;
+            margin: 15px 0;
+        }
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+        }
+        td { 
+            padding: 5px; 
+            vertical-align: middle; 
+        }
+        .label { 
+            width: 160px; 
+        }
+        input[type="text"], input[type="password"], select {
+            padding: 3px;
+            border: 1px solid #999;
+        }
+        input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            margin: 0;
+            cursor: pointer;
+        }
+        .interests-container { 
+            display: flex; 
+            flex-wrap: wrap; 
+            margin-top: 10px;
+        }
+        .interest-item { 
+            width: 50%; 
+            margin-bottom: 8px;
+            display: flex; 
+            align-items: center;
+        }
+        .interest-item label { 
+            margin-left: 10px;
+            cursor: pointer;
+            font-size: 13px; 
+        }
+        .btn-container { 
+            text-align: center; 
+            margin-top: 20px; 
+        }
+        .register-btn {
+            background: linear-gradient(to bottom, #cc0000, #800000);
+            color: white;
+            border: 2px solid #fff;
+            padding: 10px 25px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>REGISTRATION</h2>
+        <hr>
+
+        <form action="#" method="post" enctype="multipart/form-data">
+            <table>
+                <tr>
+                    <td class="label">Username:</td>
+                    <td><input type="text" name="username" size="25"></td>
+                </tr>
+                <tr>
+                    <td class="label">Password:</td>
+                    <td><input type="password" name="password" size="25"></td>
+                </tr>
+                <tr>
+                    <td class="label">Re-type Password:</td>
+                    <td><input type="password" name="re_password" size="25"></td>
+                </tr>
+            </table>
+            <hr>
+
+            <table>
+                <tr>
+                    <td class="label">Birthday:</td>
+                    <td>
+                        <select name="month">
+                            <option value="">[select one]</option>
+                            <option value="1">January</option>
+                            <option value="2">February</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                        , <input type="text" name="day" size="5">
+                        , <input type="text" name="year" size="6">
+                        <span style="color: #336699; font-size: 13px;">(Month Day, Year)</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">Images:</td>
+                    <td><input type="file" name="user_image"></td>
+                </tr>
+            </table>
+            <hr>
+
+            <table>
+                <tr>
+                    <td class="label">First Name:</td>
+                        <td><input type="text" name="first_name" size="15"></td>
+                    <td style="width: 80px;">Last Name:</td>
+                        <td><input type="text" name="last_name" size="15"></td>
+                </tr>
+            </table>
+            <hr>
+
+            <p>Interests (optional):</p>
+            <div class="interests-container">
+                <div class="interest-item">
+                    <input type="checkbox" name="interest" value="ent">
+                    <label>Entertainment</label>
+                </div>
+                <div class="interest-item">
+                    <input type="checkbox" name="interest" value="bus">
+                    <label>Business</label>
+                </div>
+                <div class="interest-item">
+                    <input type="checkbox" name="interest" value="home">
+                    <label>Home & Family</label>
+                </div>
+                <div class="interest-item">
+                    <input type="checkbox" name="interest" value="tech">
+                    <label>Computers & Technology</label>
+                </div>
+                <div class="interest-item">
+                    <input type="checkbox" name="interest" value="health">
+                    <label>Health</label>
+                </div>
+                <div class="interest-item">
+                    <input type="checkbox" name="interest" value="finance">
+                    <label>Personal Finance</label>
+                </div>
+                <div class="interest-item">
+                    <input type="checkbox" name="interest" value="music">
+                    <label>Music</label>
+                </div>
+                <div class="interest-item">
+                    <input type="checkbox" name="interest" value="smallbus">
+                    <label>Small Business</label>
+                </div>
+            </div>
+
+            <div class="btn-container">
+                <button type="submit" class="register-btn">REGISTER</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
