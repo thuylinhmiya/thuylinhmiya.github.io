@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regular Expression and Eval</title>
+    <script language="javascript">
+        function calculate() {
+            var txta = document.f.a;
+            var txtb = document.f.b;
+            var op = document.f.operator.value;
+            var resField = document.f.result;
+            var numRegex = /^-?\d*\.?\d+$/;
+
+            if (!numRegex.test(txta.value) || !numRegex.test(txtb.value)) {
+                alert("Vui lòng nhập số hợp lệ!");
+                resField.value = "Lỗi nhập liệu";
+                return;
+            }
+
+            try {
+                var expression = txta.value + op + txtb.value;
+                var output = eval(expression);
+                if (!isFinite(output)) {
+                    resField.value = "Lỗi chia cho 0";
+                } else {
+                    resField.value = output;
+                }
+            } catch (e) {
+                resField.value = "Lỗi biểu thức";
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <form name="f">
+        <table border="0" align="center">
+            <tr><td colspan="2" align="center">
+                <h2>CALCULATOR</h2></td></tr>
+            <tr><td>Number 1:</td>
+                <td><input type="text" name="a"></td></tr>
+            <tr><td>Operator:</td>
+                <td>
+                    <select name="operator">
+                        <option value="+">+</option>
+                        <option value="-">-</option>
+                        <option value="*">*</option>
+                        <option value="/">/</option>
+                        <option value="%">%</option>
+                    </select>
+                </td>
+            </tr>
+            <tr><td>Number 2:</td>
+                <td><input type="text" name="b"></td></tr>
+            <tr><td colspan="2" align="center">
+                    <br>
+                    <button type="button" onclick="calculate()">Calculate</button>
+                </td>
+            </tr>
+            <tr><td>Result:</td>
+                <td><input type="text" name="result"></td></tr>
+        </table>
+    </form>
+</body>
+</html>
