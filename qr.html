@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng Giá - Biệt Đội Trái Cây</title>
+    <!-- Import Font Montserrat với các độ dày thanh lịch hơn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-page: #064600;         /* Màu nền Dark Green */
+            --card-bg-light: #FFFFFF;
+            --card-bg-highlight: #F0F9F4; /* Xanh lá siêu nhạt, thanh lịch hơn */
+            
+            --border-color: #0F172A;    /* Viền đen hơi ngả xanh navy trầm, bớt gắt hơn đen tuyền */
+            --text-dark: #0F172A;
+            --text-muted: #475569;
+            
+            --accent-orange: #FF9F1C;   /* Cam nổi bật */
+            --accent-green: #15A054;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-page);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 4rem 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .pricing-section {
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            color: #FFFFFF; 
+        }
+
+        .pricing-header h2 {
+            font-size: 2.75rem;
+            font-weight: 800; /* Thay 900 thành 800 */
+            letter-spacing: -0.5px;
+            margin-bottom: 1rem;
+            /* Đã bỏ text-shadow để chữ nhìn sạch sẽ, chuyên nghiệp */
+        }
+
+        .pricing-header p {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: #D1F4E0;
+            opacity: 0.9;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            align-items: stretch;
+        }
+
+        /* KHUNG THẺ CƠ BẢN (Giữ nguyên cấu trúc khối cứng) */
+        .card {
+            background-color: var(--card-bg-light);
+            border: 3px solid var(--border-color);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            position: relative;
+            box-shadow: 10px 10px 0px var(--border-color);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 14px 14px 0px var(--border-color);
+        }
+
+        /* KHUNG THẺ NỔI BẬT (Ở GIỮA) */
+        .card.popular {
+            background-color: var(--card-bg-highlight);
+            transform: translateY(-8px);
+            box-shadow: 10px 18px 0px var(--border-color);
+            z-index: 2;
+        }
+
+        .card.popular:hover {
+            transform: translate(-4px, -12px);
+            box-shadow: 14px 22px 0px var(--border-color);
+        }
+
+        /* NHÃN (BADGE) - Tinh tế hơn */
+        .badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--accent-orange);
+            color: #000000;
+            padding: 6px 18px;
+            border: 2px solid var(--border-color);
+            border-radius: 4px; /* Bo góc cực nhẹ */
+            font-size: 0.85rem;
+            font-weight: 700;
+            /* Đã bỏ Uppercase */
+            white-space: nowrap;
+            box-shadow: 4px 4px 0px var(--border-color);
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 800;
+            /* Đã bỏ Uppercase */
+            margin-bottom: 0.5rem;
+            border-bottom: 2px solid #E2E8F0; /* Viền mỏng, nhạt hơn cho phần chia cắt */
+            padding-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .plan-price-wrap {
+            margin: 1.5rem 0;
+            display: flex;
+            align-items: baseline;
+        }
+
+        .price {
+            font-size: 3.2rem;
+            font-weight: 800;
+            letter-spacing: -1px; /* Giảm độ nén chữ */
+            color: var(--text-dark);
+        }
+
+        .period {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-left: 6px;
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            min-height: 45px;
+            line-height: 1.5;
+        }
+
+        .highlight-text {
+            color: #B91C1C;
+            font-weight: 600;
+            font-size: 0.9rem;
+            /* Thay đổi kiểu highlight nhìn học thuật và thanh lịch hơn */
+            display: inline-block;
+            background-color: #FEE2E2;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        /* DANH SÁCH TÍNH NĂNG (DÙNG KHỐI VUÔNG) */
+        .features-list {
+            list-style: none;
+            flex-grow: 1;
+            margin-bottom: 3rem;
+        }
+
+        .features-list li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 1.25rem;
+            font-size: 0.95rem;
+            font-weight: 500; /* Chữ nét vừa phải dễ đọc */
+            line-height: 1.5;
+            color: var(--text-dark);
+        }
+
+        .features-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 7px;
+            width: 6px;
+            height: 6px;
+            background-color: var(--border-color); /* Dấu chấm vuông nhỏ hơn, tinh tế hơn */
+        }
+
+        .features-list li.disabled {
+            color: #94A3B8;
+            text-decoration: line-through;
+        }
+
+        .features-list li.disabled::before {
+            background-color: #CBD5E1;
+        }
+
+        /* NÚT BẤM - Sang trọng hơn */
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 1.1rem;
+            border-radius: 8px; /* Bo góc 8px cho nút */
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            /* Đã bỏ Uppercase */
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-dark);
+            border: 2px solid var(--border-color);
+            background-color: #FFFFFF;
+            box-shadow: 4px 4px 0px var(--border-color);
+            transition: all 0.15s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-orange);
+            border: 2px solid var(--border-color);
+        }
+
+        .btn:active {
+            transform: translate(4px, 4px);
+            box-shadow: 0px 0px 0px var(--border-color);
+        }
+
+        .btn:hover {
+            background-color: #F1F5F9;
+        }
+        
+        .btn-primary:hover {
+            background-color: #F97316;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+            .card.popular {
+                grid-column: span 2;
+                max-width: 500px;
+                margin: 0 auto;
+                transform: translateY(0);
+            }
+            .card.popular:hover {
+                transform: translate(-4px, -4px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            .card.popular {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="pricing-section">
+        <div class="pricing-header">
+            <h2>Gói Hội Viên</h2>
+            <p>Đơn giản, trực quan và không có phí ẩn.</p>
+        </div>
+
+        <div class="pricing-grid">
+            
+            <!-- GÓI MIỄN PHÍ -->
+            <div class="card">
+                <div class="plan-name">Miễn phí</div>
+                <div class="plan-price-wrap">
+                    <span class="price">0đ</span>
+                    <span class="period">/ tháng</span>
+                </div>
+                <div class="subtitle">Hoàn hảo để bắt đầu thói quen theo dõi sức khỏe của bạn.</div>
+                
+                <ul class="features-list">
+                    <li>Theo dõi và ước tính calo cơ bản</li>
+                    <li>Chăm sóc thú ảo hàng ngày</li>
+                    <li>Trợ lý ảo (giới hạn lượt/ngày)</li>
+                    <li class="disabled">Các tính năng nâng cao chuyên sâu</li>
+                </ul>
+                
+                <a href="#" class="btn">Truy cập</a>
+            </div>
+
+            <!-- GÓI SINH VIÊN (GIỮA) -->
+            <div class="card popular">
+                <div class="badge">Dùng thử miễn phí 1 - 3 tháng</div>
+                <div class="plan-name">Sinh viên</div>
+                <div class="plan-price-wrap">
+                    <span class="price">19K</span>
+                    <span class="period">/ tháng</span>
+                </div>
+                <div class="subtitle">
+                    <span class="highlight-text">* Cần xác thực email trường (.edu.vn)</span>
+                </div>
+                
+                <ul class="features-list">
+                    <li>Tận hưởng mọi đặc quyền gói Cá nhân</li>
+                    <li>Mức giá hỗ trợ suốt thời gian học thuật</li>
+                    <li>Đua top xếp hạng nội bộ nhà trường</li>
+                </ul>
+                
+                <a href="#" class="btn btn-primary">Xác thực tài khoản</a>
+            </div>
+
+            <!-- GÓI CÁ NHÂN -->
+            <div class="card">
+                <div class="plan-name">Cá nhân</div>
+                <div class="plan-price-wrap">
+                    <span class="price">49K</span>
+                    <span class="period">/ tháng</span>
+                </div>
+                <div class="subtitle">Trải nghiệm toàn vẹn không giới hạn mọi tính năng.</div>
+                
+                <ul class="features-list">
+                    <li>Mở khóa toàn bộ tính năng nâng cao</li>
+                    <li>Trợ lý thông minh không giới hạn</li>
+                    <li>Theo dõi chéo & tham gia thử thách</li>
+                    <li>Báo cáo dữ liệu sức khỏe chuyên sâu</li>
+                </ul>
+                
+                <a href="#" class="btn">Đăng ký ngay</a>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
